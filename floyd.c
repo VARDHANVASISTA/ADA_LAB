@@ -26,7 +26,8 @@ void floyd(int v)
                for(j=0;j<v;j++)
                {
                    cnt++;
-                   d[i][j]=min(d[i][j],(temp+d[k][j]));
+                   if(d[i][j]>temp)  //*
+                      d[i][j]=min(d[i][j],(temp+d[k][j]));
                }
            }
        }
