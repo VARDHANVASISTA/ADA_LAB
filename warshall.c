@@ -13,7 +13,6 @@ void warshall(int v)
     {
        for(i=0;i<v;i++)
        {
-           cnt++;
            if(tc[i][k]==1)
            {
                for(j=0;j<v;j++)
@@ -57,35 +56,39 @@ void analysis()
 {
     int v,i,j;
     FILE *b=fopen("wb.txt","a");
+    FILE *w=fopen("ww.txt","a");
     for(v=4;v<=8;v++)
     {
+        //WORST CASE
         srand(time(NULL));
         for(i=0;i<v;i++)
         {
-           for(j=0;j<v;j++)
-           {
-              if((v%2)==0)
-              {
-                  if((i+j)%2==0)
-                    a[i][j]=1;
-                  else
-                    a[i][j]=0;
-              }
-              else
-              {
-                  if((i+j)%2==0)
-                    a[i][j]=0;
-                  else
-                    a[i][j]=1;
-              }
-              tc[i][j]=a[i][j];
-           }
+            for(j=0;j<v;j++)
+            {
+               if(i!=j)
+                a[i][j]=1;
+               else
+                a[i][j]=0;
+              tc[i][j]=a[i][j]; 
+            }
         }
+        cnt=0;
+        warshall(v);
+        fprintf(w,"%d\t%d\n",v,cnt);
+        //BEST CASE
+        for(int i=0;i<v;i++)
+        {
+               a[i][i+1]=1; 
+               tc[i][i+1]=1;
+        }
+        a[v-1][1]=1;
+        tc[v-1][1]=1;
         cnt=0;
         warshall(v);
         fprintf(b,"%d\t%d\n",v,cnt);
     }
     fclose(b);
+    fclose(w);
 }
 
 void main()
