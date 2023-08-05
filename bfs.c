@@ -88,7 +88,6 @@
  }
 void analysis()
 {
-    WHILE RUNNING FOR PLOTING COMMENT OUT THE PRINTF INSIDE THE DFS FUNCTION
     FILE *fp=fopen("plot.txt","w");
     for(int m=2;m<=15;m++)
     {
@@ -104,7 +103,7 @@ void analysis()
             }
         visited[i]=0;path[i]=0;
         }
-        dfs(m,0,-1);
+        bfs(m,0);
         fprintf(fp,"%d\t\t%d\n",m,graphcount);
     }
     fclose(fp);
