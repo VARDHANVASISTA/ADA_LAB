@@ -50,7 +50,6 @@ void correctness()
 
 void analysis()
 {
-    WHILE RUNNING FOR PLOTING COMMENT OUT THE PRINTF INSIDE THE DFS FUNCTION
     FILE *fp=fopen("plot.txt","w");
     for(int m=2;m<=15;m++)
     {
